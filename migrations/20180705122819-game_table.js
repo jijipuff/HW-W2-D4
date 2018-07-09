@@ -26,18 +26,19 @@ exports.up = function (db, callback) {
       radius: 'int',
       longitude: 'int',
       latitude: 'int'
-    }, callback
+    }
+  }, callback);
+};
+
+exports.down = function (db, callback) {
+
+  db.dropTable('user', function (err) {
+    if (err) return callback(err);
+    return callback();
   });
+};
 
-  exports.down = function (db, callback) {
+exports._meta = {
+  "version": 1
+};
 
-    db.dropTable('user', function(err) {
-      if (err) return callback(err);
-      return callback();
-    });
-  };
-
-  exports._meta = {
-    "version": 1
-  };
-}

@@ -15,20 +15,20 @@ exports.setup = function (options, seedLink) {
 };
 
 exports.up = function (db, callback) {
-  db.createTable('user', {
+  db.createTable('game_user_map', {
     columns: {
       id: {
         type: 'int',
         primaryKey: true,
         autoIncrement: true
       },
-      username: 'string',
-      email: 'string',
-      password: 'string',
-      first_name: 'string',
-      last_name: 'string',
+      user_id: 'int',
+      game_id: 'int',
+      user_status: 'string',
       longitude: 'int',
-      latitude: 'int'
+      latitude: 'int',
+      role: 'string',
+      timer: 'int'
     }
   }, callback);
 };
@@ -36,7 +36,7 @@ exports.up = function (db, callback) {
 exports.down = function (db, callback) {
   db.dropTable('user', function (err) {
     if (err) return callback(err);
-    return callback();
+    return callback;
   });
 
 };
